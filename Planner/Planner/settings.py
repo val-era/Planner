@@ -120,5 +120,3 @@ BOT_KEY = '5007326355:AAG-6NjkPz3aNn6wNk_cMcoUYC8ei1mgA-c'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGIN_URL = 'login'
