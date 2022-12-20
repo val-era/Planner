@@ -1,22 +1,11 @@
+{%  extends 'mainpage/template.html' %}
 {% load static  %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'mainpage/css/main.css' %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<body>
-    <aside>
 
-    </aside>
-    <main>
-    {% block content %}
-    {% endblock %}
-    </main>
-</body>
-</html>
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'mainpage/css/tasks.css' %}">
+    <div class="features">
+
+    </div>
+{% endblock %}
