@@ -12,17 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <body>
     <aside>
-        <img src="/static/page2/img/logo.png" style="width: 45%; min-width: 45%; margin-left: 17%; margin-top: 10%">
-        <h3>Меню</h3>
-        <ul class="ul">
-            <a class="d" href="{}" ><li><i class="fas fa-home"  ></i>Главная</li></a>
-            <a class="d" href="{}"><li><i class="fas fa-comment" ></i>Обратная связь</li></a>
-            <a class="d" href="{}"><li><i class="fas fa-handshake" ></i>О проекте</li></a>
-            <a class="d" href="{}"><li><i class="fas fa-address-card" ></i>Контакты</li></a>
-            {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{}" ><li>Выход</li></a>
-            {% endif %}
-        </ul>
+
     </aside>
     <main>
     {% block content %}
