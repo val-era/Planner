@@ -9,4 +9,4 @@ from .models import Tasks
 
 def main(request):
     task = Tasks.objects.order_by("date").filter(date=datetime.date.today())
-    return render(request, 'mainpage/main.html', {'task': task})
+    return render(request, 'mainpage/plan.html', {'task': task})

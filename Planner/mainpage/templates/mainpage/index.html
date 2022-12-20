@@ -1,0 +1,80 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}{% endblock %}</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="{% static 'mainpage/css/style.css' %}">
+
+</head>
+<body>
+<nav class="sidenav">
+    <ul class="main-buttons">
+      <li>
+        <i class="fa fa-calendar fa-2x"></i>
+        Задачи
+        <ul class="hidden">
+          <li>Сегодня</li>
+          <li>Завтра </li>
+          <li>Неделя </li>
+          <li>Календарь</li>
+        </ul>
+      </li>
+      <li>
+        <i class="fa fa-sitemap fa-2x"></i>
+        Проекты
+        <ul class="hidden">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>Ещё</li>
+        </ul>
+      </li>
+      <li>
+        <i class="fa fa-tag fa-2x"></i>
+         Теги
+         <ul class="hidden">
+          <li>Работа</li>
+          <li>Семья</li>
+          <li>Здоровье</li>
+             <li>Спорт</li>
+             <li>Ещё</li>
+        </ul>
+      </li>
+        <li>
+        <i class="fa fa-tasks fa-2x"></i>
+         Помощь планирования
+         <ul class="hidden">
+          <li>Матрица</li>
+          <li>2</li>
+          <li>3</li>
+             <li>4</li>
+             <li>Ещё</li>
+        </ul>
+      </li>
+        <br><br><br><br><br>
+        <li>
+        <i class="fa fa-user fa-2x"></i>
+         Дополнительно
+         <ul class="hidden">
+          <li>Выход</li>
+          <li>Настройки</li>
+          <li>Архив</li>
+             <li>Оповещения</li>
+        </ul>
+      </li>
+    </ul>
+</nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+  
+</body>
+</html>

@@ -1,4 +1,4 @@
-{%  extends 'mainpage/template.html' %}
+{%  extends 'mainpage/index.html' %}
 {% load static  %}
 
 {% block title %}Задачи{% endblock %}
@@ -6,20 +6,6 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'mainpage/css/tasks.css' %}">
     <div class="features">
-        <h1><a class="fas fa-calendar-minus" href="{}"></a> Задачи на сегодня </h1>
-        {% if task %}
-                {% for el in task %}
-                    <button type="button" class="btn btn-info" >
-                        <b>{{ el.title }}<br><br>{{ el.task }}</b>
-                        <p class="tag">{{el.teg }}<br><br>
-                            {% if el.is_global %}
-                            <a class="fas fa-sitemap" style="color:#faf3dd;"></a> {{ el.global_task }}
-                            {% endif %}
-                        </p>
-                    </button>
-            {% endfor %}
-        {% else %}
-            <p class="plan">Пора распланировать день!</p>
-        {% endif %}
+
     </div>
 {% endblock %}
