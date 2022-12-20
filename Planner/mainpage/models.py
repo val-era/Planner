@@ -1,7 +1,6 @@
 from django.db import models
 
 class Tasks(models.Model):
-    user_name = models.TextField("Имя")
     title = models.TextField("Название задачи")
     task = models.TextField("Задача")
     teg = models.TextField("Тэг")

@@ -5,8 +5,10 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Tasks
+from .forms import TaskForm
 
 
 def main(request):
     task = Tasks.objects.order_by("date").filter(date=datetime.date.today())
-    return render(request, 'mainpage/plan.html', {'task': task})
+    form = TaskForm()
+    return render(request, 'mainpage/plan.html', {'task': task, 'form': form})

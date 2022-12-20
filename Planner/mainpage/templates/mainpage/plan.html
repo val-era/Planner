@@ -17,7 +17,12 @@
     </a><!-- close modal -->
 
     <div class="modal-content">
-      <h3>Some content here</h3>
+      <h3>Постановка задачи</h3>
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Добавить</button>
+      </form>
     </div><!-- content -->
     
   </div>
