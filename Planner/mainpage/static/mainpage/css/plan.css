@@ -215,9 +215,9 @@ select{
 }
 
 .bg_white{
-	background: #ffffff;
+	background: #d9e1f2;
 	border: 2rem solid var(--global-background);
-	margin-left: 10%;
+	margin-left: 15%;
 }
 
 span{
@@ -277,3 +277,4 @@ table{
 .product-entry img, .product-entry .text{
 	float: left;
 }
+
