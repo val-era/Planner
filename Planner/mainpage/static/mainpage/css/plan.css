@@ -173,7 +173,6 @@ button::-moz-focus-inner {
 
 .link-2::before {
   content: '×';
-
   transform: translateY(-.1rem);
 }
 
@@ -205,6 +204,7 @@ input{
   border: 5px solid var(--light);
   border-radius: 10px;
 }
+
 select{
   font-size: 2rem;
   width: 100%;
@@ -212,4 +212,68 @@ select{
   color: var(--global-background);
   border: 5px solid var(--light);
   border-radius: 10px;
+}
+
+.bg_white{
+	background: #ffffff;
+	border: 2rem solid var(--global-background);
+	margin-left: 10%;
+}
+
+span{
+	font-family: 'Work Sans', sans-serif;
+	color: #000000;
+	margin-top: 0;
+	font-weight: 400;
+}
+
+body{
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.8;
+	color: rgba(0,0,0,.4);
+}
+
+a{
+	color: #17bebb;
+}
+
+table{
+}
+/*LOGO*/
+
+.logo h1{
+	margin: 0;
+}
+.logo h1 a{
+	color: #17bebb;
+	font-size: 24px;
+	font-weight: 700;
+	font-family: 'Work Sans', sans-serif;
+}
+
+
+
+
+.product-entry{
+	display: block;
+	position: relative;
+	float: left;
+	padding-top: 20px;
+}
+.product-entry .text{
+	width: calc(100% - 125px);
+	padding-left: 20px;
+}
+.product-entry .text h3{
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.product-entry .text p{
+	margin-top: 3%;
+	margin-bottom: 6%;
+}
+.product-entry img, .product-entry .text{
+	float: left;
 }
