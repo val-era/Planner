@@ -1,153 +1,215 @@
 
-body,
-html {
-  background: #caccd6;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ html{
+    font-size: 50%;
+ }
+
+body {
+  --light: hsl(220, 50%, 90%);
+  --primary: hsl(255, 30%, 55%);
+  --focus: hsl(210, 90%, 50%);
+  --global-background: hsl(220, 25%, 10%);
+  --background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));
+
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', sans-serif;
+  color: var(--light);
+  background: var(--global-background);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
+a,
+a:link {
+  font-family: inherit;
+  text-decoration: none;
 }
 
-h1 {
-  font-size: 1.875rem;
-  font-weight: 300;
-  margin: 60px 0 30px 0;
-  color: #323541;
-}
-
-button {
-  background-color: #323541;
-  position: relative;
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  padding: 1.25em 2em;
-  margin-top: 1em;
-  margin-left: 5em;
-  font-size: 1em;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: background 0.25s cubic-bezier(0.55, 0, 0.1, 1);
-}
-button:hover {
-  background: #323541;
-}
-button:focus {
+a:focus {
   outline: none;
 }
 
-/**
- * Overlay
- * -- only show for tablet and up
- */
-@media only screen and (min-width: 40em) {
-  .modal-overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    visibility: hidden;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1);
-  }
-  .modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
+button::-moz-focus-inner {
+  border: 0;
 }
-/**
- * Modal
- */
-.modal {
+
+
+/* box */
+.box {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  padding: 2rem 4rem 2rem;
+}
+
+.box:not(:first-child) {
+  height: 45rem;
+}
+
+.box__title {
+  font-size: 10rem;
+  font-weight: normal;
+  letter-spacing: .8rem;
+  margin-bottom: 2.6rem;
+}
+
+.box__title::first-letter {
+  color: var(--primary);
+}
+
+.box__p,
+.box__info,
+.box__note {
+  font-size: 3.6rem;
+}
+
+.box__info {
+  margin-top: 6rem;
+}
+
+.box__note {
+  line-height: 2;
+}
+
+
+/* modal */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  display: none;
   justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background: var(--m-background);
+}
+
+.modal-container:target {
+  display: flex;
+}
+
+.modal {
+  width: 50%;
+  padding: 4rem 2rem;
+  border-radius: .8rem;
+
+  color: var(--light);
+  background: var(--background);
   position: relative;
-  margin: 0 auto;
-  background-color: #fff;
-  width: 600px;
-  max-width: 75rem;
-  min-height: 20rem;
-  padding: 1rem;
-  border-radius: 3px;
-  opacity: 0;
-  overflow-y: auto;
-  visibility: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  transform: scale(1.2);
-  transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+
+  overflow: hidden;
 }
-.modal .close-modal {
-  position: absolute;
+
+.modal__title {
+  font-size: 4rem;
+}
+
+.modal__btn {
+  margin-top: 4rem;
+  padding: 1rem 1.6rem;
+  border: 1px solid var(--border-color);
+
+  color: inherit;
+  background: transparent;
+  font-size: 2rem;
+  font-family: inherit;
+  letter-spacing: .2rem;
+
+  transition: .2s;
   cursor: pointer;
-  top: 5px;
-  right: 15px;
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
-  transition-delay: 0.3s;
-}
-.modal .close-modal svg {
-  width: 1.75em;
-  height: 1.75em;
-}
-.modal .modal-content {
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1);
-  transition-delay: 0.3s;
-}
-.modal.active {
-  visibility: visible;
-  opacity: 1;
-  transform: scale(1);
-}
-.modal.active .modal-content {
-  opacity: 1;
-}
-.modal.active .close-modal {
-  transform: translateY(10px);
-  opacity: 1;
 }
 
-/**
- * Mobile styling
- */
-@media only screen and (max-width: 39.9375em) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 0;
-    transform: scale(1.1);
-    padding: 0 !important;
-  }
-
-  .close-modal {
-    right: 20px !important;
-  }
+.modal__btn:nth-of-type(1) {
+  margin-right: 1rem;
 }
 
+.modal__btn:hover,
+.modal__btn:focus {
+  background: var(--focus);
+  border-color: var(--focus);
+  transform: translateY(-.2rem);
+}
+
+/* link-... */
+.link-1 {
+  font-size: 1.8rem;
+  color: var(--light);
+  background: var(--background);
+  border-radius: 100rem;
+  padding: 1.4rem 3.2rem;
+
+  transition: .2s;
+}
+
+
+.link-2 {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid var(--border-color);
+  border-radius: 100rem;
+
+  color: inherit;
+  font-size: 2.2rem;
+
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: .2s;
+}
+
+.link-2::before {
+  content: '×';
+
+  transform: translateY(-.1rem);
+}
+
+.link-2:hover,
+.link-2:focus {
+  background: var(--focus);
+  border-color: var(--focus);
+  transform: translateY(-.2rem);
+}
+
+.abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsla(0, 0%, 1000%, .6);
+  font-size: 1.6rem;
+}
+
+form{
+  font-size: 2rem;
+  width: 100%;
+}
+
+input{
+  font-size: 2rem;
+  width: 100%;
+  background: var(--light);
+  color: var(--global-background);
+  border: 5px solid var(--light);
+  border-radius: 10px;
+}
+select{
+  font-size: 2rem;
+  width: 100%;
+  background: var(--light);
+  color: var(--global-background);
+  border: 5px solid var(--light);
+  border-radius: 10px;
+}
