@@ -10,6 +10,7 @@
 <div class="box">
   <a href="#task" class="link-1" id="">Добавить задачу</a>
   {% for el in task %}
+    {% if not el.is_archive %}
           <tr>
 	      	<table class="bg_white" role="presentation" cellpadding="0" cellspacing="0" width="70%">
 					  <tr style="border-bottom: 1px solid rgba(0,0,0,.05);">
@@ -35,10 +36,10 @@
                               <ul>
                                 <li><a><i class="fa fa-ellipsis-h"></i></a>
                                   <ul class="dropdown">
-                                    <li><a href="#">В архив</a></li>
+                                    <li><a href="{% url 'archive' parameter=el.id %}">В архив</a></li>
                                     <li><a href="#">Перенести дату</a></li>
                                     <li><a href="#">Привязать к проекту</a></li>
-                                    <li><a href="#">Удалить</a></li>
+                                    <li><a href="{% url 'del' parameter=el.id %}">Удалить</a></li>
                                   </ul>
                                 </li>
                               </ul>
@@ -47,6 +48,7 @@
 					  </tr>
 	      	</table>
 	      </tr>
+    {% endif %}
 {% endfor %}
 
   <div class="modal-container" id="task" style="--m-background: transparent;">
