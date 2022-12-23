@@ -26,21 +26,23 @@
                             <span class="price" style="color: #000; font-size: 2rem;">{{ el.global_task }}</span>
                         </td>
                         {% endif %}
-					  	<td valign="middle" width="15%" style="text-align:left; padding: 0 2em;">
-					  		<span class="price" style="color: #000; font-size: 2rem;">{{ el.teg }}</span>
+					  	<td valign="middle" width="15%" style="text-align:right; padding: 0 2em;">
+					  		<span class="price" style="color: #000; font-size: 2rem; border: 0.7rem solid #828791; border-radius: 16px; background: #828791;">{{ el.teg }}</span>
 					  	</td>
-                        <td valign="middle" width="10%" style="text-align:left; background:#131720">
-                          <details class="dropdown">
-                          <summary role="button" style="list-style: none">
-					  		<i class="fa fa-bars fa-2x" style="color: #fff; font-size: 2rem; padding: 0 2em;"></i>
-                             </summary>
-                                  <ul style="list-style: none; text-align:left; padding: 0 2em; background:#131720">
-                                    <li><a href="#" style="color: #3cab3c">В архив </a></li>
-                                    <li><a href="#" style="color: #ebeb00">Изменить дату</a></li>
-                                    <li><a href="#" style="">Привязать к глобальному проекту</a></li>
-                                    <li><a href="#" style="color: #f13a13">Удалить</a></li>
-                                </ul>
-                            </details>
+                        <td valign="middle" width="10%" style="text-align:left;">
+                            <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arvo&amp;display=swap'>
+                          <nav role="navigation" class="primary-navigation">
+                              <ul>
+                                <li><a><i class="fa fa-ellipsis-h"></i></a>
+                                  <ul class="dropdown">
+                                    <li><a href="#">В архив</a></li>
+                                    <li><a href="#">Перенести дату</a></li>
+                                    <li><a href="#">Привязать к проекту</a></li>
+                                    <li><a href="#">Удалить</a></li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </nav>
 					  	</td>
 					  </tr>
 	      	</table>

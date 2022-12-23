@@ -253,9 +253,6 @@ table{
 	font-family: 'Work Sans', sans-serif;
 }
 
-
-
-
 .product-entry{
 	display: block;
 	position: relative;
@@ -277,4 +274,71 @@ table{
 .product-entry img, .product-entry .text{
 	float: left;
 }
+
+nav.primary-navigation {
+  margin: 0 auto;
+  display: block;
+  padding: 0;
+  text-align: center;
+  font-size: 16px;
+}
+nav.primary-navigation ul li {
+  list-style: none;
+  margin: 0 auto;
+  color: #fff;
+  display: inline-block;
+  font-family: 'Work Sans', sans-serif;
+  padding: 0 10px;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  font-family: arvo;
+}
+nav.primary-navigation li a {
+  color: black;
+  font-family: 'Work Sans', sans-serif;
+}
+nav.primary-navigation li a:hover {
+  color: #3ca0e7;
+}
+nav.primary-navigation li:hover {
+  cursor: pointer;
+}
+nav.primary-navigation ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9999;
+  position: absolute;
+  font-family: 'Work Sans', sans-serif;
+  padding-left: 0;
+  left: 0;
+  display: none;
+  background: white;
+}
+nav.primary-navigation ul li:hover > ul,
+nav.primary-navigation ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  min-width: 250px;
+  font-family: 'Work Sans', sans-serif;
+  text-align: left;
+  padding-top: 20px;
+  box-shadow: 0px 3px 5px -1px #ccc;
+}
+nav.primary-navigation ul li ul li {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  border-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: #3CA0E7;
+}
+
 
