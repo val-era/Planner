@@ -28,7 +28,7 @@ class TaskForm(ModelForm):
 
 
 class DateForm(Form):
-    date = DateField( label='Выберите дату для переноса',
+    date = DateField(label='Выберите дату для переноса',
         input_formats=['%d/%m/%Y %H:%M'],
         widget=DateInput(attrs={
             'type': 'date',
@@ -41,4 +41,22 @@ class DateForm(Form):
         "type": "text",
 
     }))
+
+class GlobalForm(Form):
+    global_add = CharField(label="Добавить Глобальную задачу", required=False,
+    widget = TextInput(attrs={
+        'type': 'text',
+        'placeholder': 'Добавить в новый проект',
+    })
+    )
+
+    idtask = CharField(widget=TextInput(attrs={
+                        'type': 'text',
+    })
+    )
+
+    sel = CharField(widget=TextInput(attrs={
+                               'type': 'text',
+    })
+    )
 

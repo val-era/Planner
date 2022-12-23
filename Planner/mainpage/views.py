@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Tasks
-from .forms import TaskForm, DateForm
+from .forms import TaskForm, DateForm, GlobalForm
 
 
 def save(title, task, teg, date):
@@ -37,10 +37,30 @@ def main(request):
         date = time_form["date"].value()
         Tasks.objects.filter(id=id).update(date=date)
 
+        glob_form = GlobalForm(request.POST)
+        gl_id = glob_form["idtask"].value()
+        select = glob_form["sel"].value()
+        global_task = glob_form["global_add"].value()
+        if select != "" and global_task == "":
+            Tasks.objects.filter(id=gl_id).update(global_task=select)
+            Tasks.objects.filter(id=gl_id).update(is_global=True)
+        elif select != "" and global_task != "":
+            Tasks.objects.filter(id=gl_id).update(global_task=global_task)
+            Tasks.objects.filter(id=gl_id).update(is_global=True)
+        elif select == "" and global_task != "":
+            Tasks.objects.filter(id=gl_id).update(global_task=global_task)
+            Tasks.objects.filter(id=gl_id).update(is_global=True)
+        else:
+            pass
+
+
     task = Tasks.objects.order_by("date").filter(date=datetime.date.today())
+    global_tasks = set([i.global_task for i in Tasks.objects.order_by("date")])
     form = TaskForm()
     dateform = DateForm()
-    return render(request, 'mainpage/plan.html', {'task': task, 'form': form, 'dateform': dateform})
+    globform = GlobalForm()
+    return render(request, 'mainpage/plan.html', {'task': task, 'form': form, 'dateform': dateform,
+                                                  'globform': globform, 'global_tasks': global_tasks})
 
 
 def archive(request, parameter):

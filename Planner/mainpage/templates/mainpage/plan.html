@@ -37,8 +37,8 @@
                                 <li><a><i class="fa fa-ellipsis-h"></i></a>
                                   <ul class="dropdown">
                                     <li><a href="{% url 'archive' parameter=el.id %}">В архив</a></li>
-                                    <li ><a href="#proj{{ el.id }}" class="link-5" id="{{ el.id }}">Перенести дату</a></li>
-                                    <li><a href="#" >Привязать к проекту</a></li>
+                                    <li ><a href="#dat{{ el.id }}" class="link-5" id="{{ el.id }}">Перенести дату</a></li>
+                                    <li><a href="#project{{ el.id }}" class="link-6" >Привязать к проекту</a></li>
                                     <li><a href="{% url 'del' parameter=el.id %}">Удалить</a></li>
                                   </ul>
                                 </li>
@@ -49,7 +49,7 @@
 	      	</table>
 	      </tr>
 
-    <div class="modal-container" id="proj{{ el.id }}" style="--m-background: transparent;">
+    <div class="modal-container" id="dat{{ el.id }}" style="--m-background: transparent;">
     <div class="modal">
         <h1 class="modal__title">Смена даты</h1>
         <form method="post">
@@ -59,6 +59,30 @@
       <button class="modal__btn" type="submit" onclick="location.href='{% url 'main' %}" >Подтвердить &rarr;</button>
       </form>
       <a href="" class="link-2"></a>
+    </div>
+  </div>
+
+
+    <div class="modal-container" id="project{{ el.id }}" style="--m-background: transparent;">
+    <div class="modal">
+        <h1 class="modal__title">Привязать к проекту</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ globform.global_add }}
+            <label for="sel">Выберите существующий</label>
+            <select name="sel" id="id_sel">
+                {% for i in global_tasks %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+                {% if "" not in global_tasks %}
+                <option value="" selected=""></option>
+                {% endif %}
+            </select>
+            <input value={{ el.id }} id="idtask" name="idtask" class="idtask" style="visibility: hidden;">
+            <button class="modal__btn" type="submit" onclick="location.href='{% url 'main' %}">Подтвердить &rarr;</button>
+      </form>
+      <a href="" class="link-2"></a>
+
     </div>
   </div>
 
