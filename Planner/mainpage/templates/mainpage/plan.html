@@ -37,8 +37,8 @@
                                 <li><a><i class="fa fa-ellipsis-h"></i></a>
                                   <ul class="dropdown">
                                     <li><a href="{% url 'archive' parameter=el.id %}">В архив</a></li>
-                                    <li><a href="#">Перенести дату</a></li>
-                                    <li><a href="#">Привязать к проекту</a></li>
+                                    <li ><a href="#proj{{ el.id }}" class="link-5" id="{{ el.id }}">Перенести дату</a></li>
+                                    <li><a href="#" >Привязать к проекту</a></li>
                                     <li><a href="{% url 'del' parameter=el.id %}">Удалить</a></li>
                                   </ul>
                                 </li>
@@ -48,8 +48,24 @@
 					  </tr>
 	      	</table>
 	      </tr>
+
+    <div class="modal-container" id="proj{{ el.id }}" style="--m-background: transparent;">
+    <div class="modal">
+        <h1 class="modal__title">Смена даты</h1>
+        <form method="post">
+      {% csrf_token %}
+      {{ dateform.date }}
+            <input value={{ el.id }} id="id" name="id" class="id" style="visibility: hidden;">
+      <button class="modal__btn" type="submit" onclick="location.href='{% url 'main' %}" >Подтвердить &rarr;</button>
+      </form>
+      <a href="" class="link-2"></a>
+    </div>
+  </div>
+
     {% endif %}
 {% endfor %}
+
+
 
   <div class="modal-container" id="task" style="--m-background: transparent;">
     <div class="modal">
@@ -57,12 +73,13 @@
       <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <button class="modal__btn" type="submit">Подтвердить &rarr;</button>
-
+      <button class="modal__btn" type="submit" onclick="location.href='{% url 'main' %}">Подтвердить &rarr;</button>
       </form>
       <a href="" class="link-2"></a>
     </div>
   </div>
+
+
 </div>
 
 </body>

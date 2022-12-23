@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Tasks
-from .forms import TaskForm
+from .forms import TaskForm, DateForm
 
 
 def save(title, task, teg, date):
@@ -31,9 +31,16 @@ def main(request):
             return redirect('main')
         else:
             pass
+
+        time_form = DateForm(request.POST)
+        id = time_form["id"].value()
+        date = time_form["date"].value()
+        Tasks.objects.filter(id=id).update(date=date)
+
     task = Tasks.objects.order_by("date").filter(date=datetime.date.today())
     form = TaskForm()
-    return render(request, 'mainpage/plan.html', {'task': task, 'form': form})
+    dateform = DateForm()
+    return render(request, 'mainpage/plan.html', {'task': task, 'form': form, 'dateform': dateform})
 
 
 def archive(request, parameter):
@@ -44,3 +51,5 @@ def archive(request, parameter):
 def delite(request, parameter):
     Tasks.objects.filter(id=parameter).delete()
     return redirect('main')
+
+

@@ -1,8 +1,7 @@
 import datetime
 
 from .models import Tasks
-from django.forms import ModelForm, TextInput, DateInput
-
+from django.forms import ModelForm, TextInput, DateInput, DateField, Form, CharField
 
 
 class TaskForm(ModelForm):
@@ -26,3 +25,20 @@ class TaskForm(ModelForm):
                 'max': "2030-12-31",
             })
         }
+
+
+class DateForm(Form):
+    date = DateField( label='Выберите дату для переноса',
+        input_formats=['%d/%m/%Y %H:%M'],
+        widget=DateInput(attrs={
+            'type': 'date',
+                'min': "2022-01-01",
+                'max': "2030-12-31",
+
+        })
+    )
+    id = CharField( widget=TextInput(attrs={
+        "type": "text",
+
+    }))
+
