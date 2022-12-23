@@ -37,8 +37,6 @@ button::-moz-focus-inner {
   border: 0;
 }
 
-
-/* box */
 .box {
   display: flex;
   flex-direction: column;
@@ -75,8 +73,6 @@ button::-moz-focus-inner {
   line-height: 2;
 }
 
-
-/* modal */
 .modal-container {
   position: fixed;
   top: 0;
@@ -139,7 +135,6 @@ button::-moz-focus-inner {
   transform: translateY(-.2rem);
 }
 
-/* link-... */
 .link-1 {
   font-size: 1.8rem;
   color: var(--light);
@@ -149,7 +144,6 @@ button::-moz-focus-inner {
 
   transition: .2s;
 }
-
 
 .link-2 {
   width: 4rem;
@@ -241,7 +235,6 @@ a{
 
 table{
 }
-/*LOGO*/
 
 .logo h1{
 	margin: 0;
@@ -260,19 +253,13 @@ table{
 	padding-top: 20px;
 }
 .product-entry .text{
-	width: calc(100% - 125px);
+	width: calc(100% - 50px);
 	padding-left: 20px;
 }
-.product-entry .text h3{
-	margin-bottom: 0;
-	padding-bottom: 0;
-}
+
 .product-entry .text p{
 	margin-top: 3%;
 	margin-bottom: 6%;
-}
-.product-entry img, .product-entry .text{
-	float: left;
 }
 
 nav.primary-navigation {

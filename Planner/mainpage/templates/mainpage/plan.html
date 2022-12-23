@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{% static 'mainpage/css/plan.css' %}">
 <body>
 <div class="box">
-  <a href="#m1-o" class="link-1" id="m1-c">Добавить задачу</a>
+  <a href="#task" class="link-1" id="">Добавить задачу</a>
   {% for el in task %}
           <tr>
 	      	<table class="bg_white" role="presentation" cellpadding="0" cellspacing="0" width="70%">
@@ -22,8 +22,8 @@
 					  		</div>
 					  	</td>
                         {% if el.is_global %}
-                        <td  valign="middle" width="15%" style="text-align:left;">
-                            <span class="price" style="color: #000; font-size: 2rem;">{{ el.global_task }}</span>
+                        <td  valign="middle" width="15%" style="text-align:center; background: #b3c3e6;">
+                            <span class="price" style="color: #000; font-size: 1.5rem; font-family: 'Work Sans', sans-serif;"><strong>{{ el.global_task }}</strong></span>
                         </td>
                         {% endif %}
 					  	<td valign="middle" width="15%" style="text-align:right; padding: 0 2em;">
@@ -49,7 +49,7 @@
 	      </tr>
 {% endfor %}
 
-  <div class="modal-container" id="m1-o" style="--m-background: transparent;">
+  <div class="modal-container" id="task" style="--m-background: transparent;">
     <div class="modal">
       <h1 class="modal__title">Добавление задачи</h1>
       <form method="post">
@@ -58,7 +58,7 @@
       <button class="modal__btn" type="submit">Подтвердить &rarr;</button>
 
       </form>
-      <a href="#m1-c" class="link-2"></a>
+      <a href="" class="link-2"></a>
     </div>
   </div>
 </div>

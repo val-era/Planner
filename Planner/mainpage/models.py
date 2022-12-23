@@ -13,7 +13,7 @@ class Tasks(models.Model):
     teg = models.CharField("Тег", max_length=11, choices=tag_choices, default="")
     date = models.DateField('Дата Задачи')
     is_global = models.BooleanField('Отнести к задаче')
-    global_task = models.CharField("Глобальная задача", null=True, max_length=100)
+    global_task = models.CharField("Глобальная задача", blank=True, max_length=100)
 
     def __str__(self):
         return self.title
