@@ -72,4 +72,23 @@ def delite(request, parameter):
     Tasks.objects.filter(id=parameter).delete()
     return redirect('main')
 
+def archive_tasks(request):
+    if request.method == 'POST':
+        form = DateForm(request.POST)
+        id = form["id"].value()
+        date = form["date"].value()
+        Tasks.objects.filter(id=id).update(date=date)
+        Tasks.objects.filter(id=id).update(is_archive=False)
+
+    tasks = Tasks.objects.order_by("date").filter(is_archive=True)
+    start_date = datetime.date(2022, 11, 30)
+    end_date = datetime.date.today() - datetime.timedelta(days=1)
+    date_last = Tasks.objects.order_by("date").filter(date__range=[start_date, end_date])
+    task = [tasks, date_last]
+    dateform = DateForm()
+    return render(request, 'mainpage/archive_tasks.html', {'task': task, 'dateform': dateform})
+
+def delite_archive(request, parameter):
+    Tasks.objects.filter(id=parameter).delete()
+    return redirect('archive_tasks')
 

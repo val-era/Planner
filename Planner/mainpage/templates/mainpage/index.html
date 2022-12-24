@@ -19,10 +19,10 @@
         <i class="fa fa-calendar fa-2x"></i>
         Задачи
         <ul class="hidden">
-          <li>Сегодня</li>
+          <a href="{% url 'main' %}"><li>Сегодня</li></a>
           <li>Завтра </li>
           <li>Неделя </li>
-          <li>Календарь</li>
+          <li>Месяц</li>
         </ul>
       </li>
       <li>
@@ -65,7 +65,7 @@
          <ul class="hidden">
           <li>Выход</li>
           <li>Настройки</li>
-          <li>Архив</li>
+          <a href="{% url 'archive_tasks' %}"><li>Архив</li></a>
              <li>Оповещения</li>
         </ul>
       </li>
