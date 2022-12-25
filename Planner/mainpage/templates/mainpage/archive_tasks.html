@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{% static 'mainpage/css/plan.css' %}">
 <body>
 <div class="box">
+    <h1 style="font-size:2em; color: #fff; font-family: 'Work Sans', sans-serif;">Архив:</h1>
   {% for i in task %}
     {% for el in i %}
           <tr>
@@ -22,14 +23,14 @@
 					  		</div>
 					  	</td>
                         {% if el.is_global %}
-                        <td  valign="middle" width="15%" style="text-align:center; background: #b3c3e6;">
+                        <td  valign="middle" width="10%" style="text-align:center; background: #b3c3e6; padding: 0 1em;">
                             <span class="price" style="color: #000; font-size: 1.5rem; font-family: 'Work Sans', sans-serif;"><strong>{{ el.global_task }}</strong></span>
                         </td>
                         {% endif %}
-					  	<td valign="middle" width="15%" style="text-align:right; padding: 0 2em;">
-					  		<span class="price" style="color: #000; font-size: 2rem; border: 0.7rem solid #828791; border-radius: 16px; background: #828791;">{{ el.teg }}</span>
+					  	<td valign="middle" width="25%" style="text-align:right; padding: 0 2em;">
+					  		<span class="price" style="color: #000; font-size: 1.6rem; border: 0.7rem solid #828791; border-radius: 16px; background: #828791;"><strong>{{ el.teg }}</strong></span>
 					  	</td>
-                        <td valign="middle" width="10%" style="text-align:left;">
+                        <td valign="middle" width="5%" style="text-align:left;">
                             <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arvo&amp;display=swap'>
                           <nav role="navigation" class="primary-navigation">
                               <ul>

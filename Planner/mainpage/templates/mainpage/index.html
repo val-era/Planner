@@ -20,9 +20,9 @@
         Задачи
         <ul class="hidden">
           <a href="{% url 'main' %}"><li>Сегодня</li></a>
-          <li>Завтра </li>
-          <li>Неделя </li>
-          <li>Месяц</li>
+          <a href="{% url 'tomorrow' %}"><li>Завтра</li></a>
+          <a href="{% url 'week' %}"><li>Неделя</li></a>
+          <a href="{% url 'month' %}"><li>Месяц</li></a>
         </ul>
       </li>
       <li>

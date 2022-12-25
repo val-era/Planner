@@ -9,12 +9,14 @@
 <body>
 <div class="box">
   <a href="#task" class="link-1" id="">Добавить задачу</a>
-    {% if day == 'today' %}
-     <h1 style="font-size:2em; color: #fff; font-family: 'Work Sans', sans-serif;">Сегодня:</h1>
+    {% if day == 'week' %}
+     <h1 style="font-size:2em; color: #fff; font-family: 'Work Sans', sans-serif;">Неделя:</h1>
     {% else %}
-    <h1 style="font-size:2em; color: #fff; font-family: 'Work Sans', sans-serif;">Завтра:</h1>
+    <h1 style="font-size:2em; color: #fff; font-family: 'Work Sans', sans-serif;">Месяц:</h1>
     {% endif %}
-  {% for el in task %}
+  {% for key, value in task.items %}
+    <h1 style="font-size:1.2em; color: #fff; font-family: 'Work Sans', sans-serif;">{{ key }}</h1>
+    {% for el in value %}
     {% if not el.is_archive %}
           <tr>
 	      	<table class="bg_white" role="presentation" cellpadding="0" cellspacing="0" width="70%">
@@ -41,10 +43,10 @@
                               <ul>
                                 <li><a><i class="fa fa-ellipsis-h"></i></a>
                                   <ul class="dropdown">
-                                    <li><a href="{% url 'archive' parameter=el.id parameter2=day%}">В архив</a></li>
+                                    <li><a href="{% url 'archive' parameter=el.id parameter2=day %}">В архив</a></li>
                                     <li ><a href="#dat{{ el.id }}" class="link-5" id="{{ el.id }}">Перенести дату</a></li>
                                     <li><a href="#project{{ el.id }}" class="link-6" >Привязать к проекту</a></li>
-                                    <li><a href="{% url 'del' parameter=el.id parameter2=day %}">Удалить</a></li>
+                                    <li><a href="{% url 'del' parameter=el.id parameter2=day%}">Удалить</a></li>
                                   </ul>
                                 </li>
                               </ul>
@@ -92,7 +94,9 @@
   </div>
 
     {% endif %}
+    {% endfor %}
 {% endfor %}
+
 
 
 
