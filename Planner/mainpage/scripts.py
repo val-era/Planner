@@ -1,6 +1,5 @@
 import datetime
 from .models import Tasks
-from .forms import TaskForm, DateForm, GlobalForm
 
 
 def save(title, task, teg, date):

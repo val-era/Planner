@@ -60,3 +60,18 @@ class GlobalForm(Form):
     })
     )
 
+
+class TagsForm(ModelForm):
+    date = DateField(label='Выберите дату, при необходимости', required=False,
+                     input_formats=['%d/%m/%Y %H:%M'],
+                     widget=DateInput(attrs={
+                         'type': 'date',
+                         'min': "2022-01-01",
+                         'max': "2030-12-31",
+
+                     })
+                     )
+    class Meta:
+        model = Tasks
+        fields = ['teg']
+

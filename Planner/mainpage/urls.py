@@ -11,4 +11,5 @@ urlpatterns = [
     path('tomorrow', views.tomorrow, name='tomorrow'),
     path('week', views.week, name='week'),
     path('month', views.month, name='month'),
+    path(r'tags/<parameter>/<parameter2>', views.tags, name='tags'),
 ]

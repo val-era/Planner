@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Tasks
-from .forms import TaskForm, DateForm, GlobalForm
+from .forms import TaskForm, DateForm, GlobalForm, TagsForm
 from .scripts import save, update_global
 
 
@@ -205,4 +205,37 @@ def month(request):
     return render(request, 'mainpage/days.html', {'task': task, 'form': form, 'dateform': dateform,
                                                   'globform': globform, 'global_tasks': global_tasks,
                                                   'day': 'month'})
+
+
+def tags(request, parameter, parameter2):
+    if request.method == 'POST':
+        form_tag = TagsForm(request.POST)
+        tag = form_tag["teg"].value()
+        date = form_tag['date'].value()
+        if date != "" and tag != "":
+            return redirect('tags', tag, date)
+        elif date == "" and tag != "":
+            return redirect('tags', tag, "all")
+        elif date != "" and tag == "":
+            return redirect('tags', "more", date)
+        else:
+            return redirect('tags', "more", "all")
+
+    if parameter2 == "all":
+        if parameter == "more":
+            tasks = Tasks.objects.order_by("date").filter(
+                date__range=[datetime.date.today(), datetime.date.today() + datetime.timedelta(120)])
+        else:
+            task = Tasks.objects.order_by("date").filter(
+                date__range=[datetime.date.today(), datetime.date.today() + datetime.timedelta(120)])
+            tasks = task.filter(teg=parameter)
+    else:
+        if parameter == "more":
+            tasks = Tasks.objects.order_by("date").filter(date=parameter2)
+        else:
+            task = Tasks.objects.order_by("date").filter(date=parameter2)
+            tasks = task.filter(teg=parameter)
+
+    form = TagsForm()
+    return render(request, 'mainpage/tags.html', {'tasks': tasks, 'form': form})
 
