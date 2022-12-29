@@ -40,11 +40,11 @@
         <i class="fa fa-tag fa-2x"></i>
          Теги
          <ul class="hidden">
-          <li>Работа</li>
-          <li>Семья</li>
-          <li>Здоровье</li>
-             <li>Спорт</li>
-             <li>Ещё</li>
+          <a href="{% url 'tags' parameter='💻Работа' parameter2='all' %}"><li>💻 Работа</li></a>
+          <a href="{% url 'tags' parameter='👫Семья' parameter2='all' %}"><li>👫 Семья</li></a>
+          <a href="{% url 'tags' parameter='🧬Здоровье' parameter2='all' %}"><li>🧬 Здоровье</li></a>
+             <a href="{% url 'tags' parameter='🏆Спорт' parameter2='all' %}"><li>🏆 Спорт</li></a>
+             <a href="{% url 'tags' parameter='more' parameter2='all' %}"><li>Ещё</li></a>
         </ul>
       </li>
         <li>

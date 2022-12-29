@@ -1,0 +1,48 @@
+{%  extends 'mainpage/index.html' %}
+{% load static  %}
+
+{% block title %}Поиск по тегам{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'mainpage/css/plan.css' %}">
+<body>
+<div class="box">
+	 <form method="post" style="width:50%; margin-left: 15%; padding: 0.5em 2em; color:#fff; font-family: 'Work Sans', sans-serif;">
+      {% csrf_token %}
+		 {{ form.as_p }}
+		 <button class="modal__btn" type="submit" style="font-family: 'Work Sans', sans-serif; background:#b3c3e6; color:#000;">Поиск</button>
+      </form>
+    {% for el in tasks %}
+    {% if not el.is_archive %}
+          <tr>
+	      	<table class="bg_white" role="presentation" cellpadding="0" cellspacing="0" width="70%">
+					  <tr style="border-bottom: 1px solid rgba(0,0,0,.05);">
+					  	<td valign="middle" width="65%" style="text-align:left; padding: 0 2em;">
+					  		<div class="product-entry">
+					  			<div class="text">
+                                  <span><strong>{{ el.title }}</strong></span>
+					  				<p>{{ el.task }}</p>
+					  			</div>
+					  		</div>
+					  	</td>
+                        {% if el.is_global %}
+                        <td  valign="middle" width="10%" style="text-align:center; background: #b3c3e6; padding: 0 1em;">
+                            <span class="price" style="color: #000; font-size: 1.5rem; font-family: 'Work Sans', sans-serif;"><strong>{{ el.global_task }}</strong></span>
+                        </td>
+                        {% endif %}
+					  	<td valign="middle" width="25%" style="text-align:right; padding: 0 2em;">
+					  		<span class="price" style="color: #000; font-size: 1.6rem; border: 0.7rem solid #828791; border-radius: 16px; background: #828791;"><strong>{{ el.teg }}</strong></span>
+					  	</td>
+						  <td valign="middle" width="10%" style="text-align:center; padding: 0 1em;">{{ el.date|date:"d.m" }}
+					  	</td>
+					  </tr>
+	      	</table>
+	      </tr>
+    {% endif %}
+    {% endfor %}
+</div>
+
+</body>
+
+{% endblock %}
