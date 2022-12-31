@@ -12,4 +12,5 @@ urlpatterns = [
     path('week', views.week, name='week'),
     path('month', views.month, name='month'),
     path(r'tags/<parameter>/<parameter2>', views.tags, name='tags'),
+    path('global_projects/<parameter>', views.global_projects, name='global_projects'),
 ]

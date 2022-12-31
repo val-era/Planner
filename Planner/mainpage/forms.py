@@ -75,3 +75,9 @@ class TagsForm(ModelForm):
         model = Tasks
         fields = ['teg']
 
+
+class GlobalProjectsForm(Form):
+    globform = CharField(widget=TextInput(attrs={
+        "type": "text",
+    }))
+

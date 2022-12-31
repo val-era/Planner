@@ -45,7 +45,11 @@
                                   <ul class="dropdown">
                                     <li><a href="{% url 'archive' parameter=el.id parameter2=day %}">В архив</a></li>
                                     <li ><a href="#dat{{ el.id }}" class="link-5" id="{{ el.id }}">Перенести дату</a></li>
-                                    <li><a href="#project{{ el.id }}" class="link-6" >Привязать к проекту</a></li>
+                                    {% if el.is_global %}
+                                        <li><a href="#project{{ el.id }}" class="link-6" >Поменять проект</a></li>
+                                      {% else %}
+                                        <li><a href="#project{{ el.id }}" class="link-6" >Привязать к проекту</a></li>
+                                      {% endif %}
                                     <li><a href="{% url 'del' parameter=el.id parameter2=day%}">Удалить</a></li>
                                   </ul>
                                 </li>

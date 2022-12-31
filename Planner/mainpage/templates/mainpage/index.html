@@ -29,11 +29,7 @@
         <i class="fa fa-sitemap fa-2x"></i>
         Проекты
         <ul class="hidden">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>Ещё</li>
+          <a href="{% url 'global_projects' parameter='all' %}"><li>Открыть глобальные проекты</li></a>
         </ul>
       </li>
       <li>
@@ -73,6 +69,7 @@
 </aside>
     <main>
         {% block content %}
+
         {% endblock %}
     </main>
   

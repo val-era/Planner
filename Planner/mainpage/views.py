@@ -1,11 +1,8 @@
 import datetime
 
-from django.shortcuts import render
-from django.conf import settings
-from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Tasks
-from .forms import TaskForm, DateForm, GlobalForm, TagsForm
+from .forms import TaskForm, DateForm, GlobalForm, TagsForm, GlobalProjectsForm
 from .scripts import save, update_global
 
 
@@ -239,3 +236,36 @@ def tags(request, parameter, parameter2):
     form = TagsForm()
     return render(request, 'mainpage/tags.html', {'tasks': tasks, 'form': form})
 
+
+def global_projects(request, parameter):
+    if request.method == 'POST':
+        form = GlobalProjectsForm(request.POST)
+        value = form['globform'].value()
+        if value == "":
+            return redirect('global_projects', "all")
+        else:
+            return redirect('global_projects', value)
+
+    form = GlobalProjectsForm()
+    tasks_obj = Tasks.objects.order_by("date").filter(is_global=True)
+    all_tasks = tasks_obj.filter(
+        date__range=[datetime.date.today(), datetime.date.today() + datetime.timedelta(120)])
+    if parameter != 'all':
+        tasks = all_tasks.filter(global_task=parameter)
+    else:
+        tasks = all_tasks
+    task = {}
+    for i in tasks:
+        if i.global_task not in task:
+            task[i.global_task] = [i]
+        else:
+            task[i.global_task].append(i)
+
+    all_task = {}
+    for i in all_tasks:
+        if i.global_task not in all_task:
+            all_task[i.global_task] = [i]
+        else:
+            all_task[i.global_task].append(i)
+
+    return render(request, 'mainpage/global.html', {'task': task, 'form': form, 'all_task': all_task})
