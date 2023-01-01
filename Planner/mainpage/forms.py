@@ -1,6 +1,6 @@
 import datetime
 
-from .models import Tasks
+from .models import Tasks, Notifications
 from django.forms import ModelForm, TextInput, DateInput, DateField, Form, CharField
 
 
@@ -29,34 +29,35 @@ class TaskForm(ModelForm):
 
 class DateForm(Form):
     date = DateField(label='Выберите дату для переноса',
-        input_formats=['%d/%m/%Y %H:%M'],
-        widget=DateInput(attrs={
-            'type': 'date',
-                'min': "2022-01-01",
-                'max': "2030-12-31",
+                     input_formats=['%d/%m/%Y %H:%M'],
+                     widget=DateInput(attrs={
+                         'type': 'date',
+                         'min': "2022-01-01",
+                         'max': "2030-12-31",
 
-        })
-    )
-    id = CharField( widget=TextInput(attrs={
+                     })
+                     )
+    id = CharField(widget=TextInput(attrs={
         "type": "text",
 
     }))
 
+
 class GlobalForm(Form):
     global_add = CharField(label="Добавить Глобальную задачу", required=False,
-    widget = TextInput(attrs={
-        'type': 'text',
-        'placeholder': 'Добавить в новый проект',
-    })
-    )
+                           widget=TextInput(attrs={
+                               'type': 'text',
+                               'placeholder': 'Добавить в новый проект',
+                           })
+                           )
 
     idtask = CharField(widget=TextInput(attrs={
-                        'type': 'text',
+        'type': 'text',
     })
     )
 
     sel = CharField(widget=TextInput(attrs={
-                               'type': 'text',
+        'type': 'text',
     })
     )
 
@@ -71,6 +72,7 @@ class TagsForm(ModelForm):
 
                      })
                      )
+
     class Meta:
         model = Tasks
         fields = ['teg']
@@ -81,3 +83,19 @@ class GlobalProjectsForm(Form):
         "type": "text",
     }))
 
+
+class NotificationsForms(ModelForm):
+    class Meta:
+        model = Notifications
+        fields = ['user_id', 'name']
+
+        widgets = {
+            "user_id": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Id пользователя в Telegram',
+            }),
+            "name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите имя',
+            })
+        }

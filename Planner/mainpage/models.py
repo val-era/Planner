@@ -2,6 +2,7 @@ import uuid
 
 from django.db import models
 
+
 class Tasks(models.Model):
     tag_choices = (("💻Работа", '💻Работа'), ("🏆Спорт", "🏆Спорт"),
                    ("👫Семья", "👫Семья"), ("🎧Личная", "🎧Личная"),
@@ -26,3 +27,14 @@ class Tasks(models.Model):
         verbose_name = "Задача"
         verbose_name_plural = "Задачи"
 
+
+class Notifications(models.Model):
+    user_id = models.CharField("ID пользователя", max_length=100)
+    name = models.CharField("Имя", max_length=100)
+
+    def __str__(self):
+        return self.user_id
+
+    class Meta:
+        verbose_name = "Уведомление"
+        verbose_name_plural = "Уведомления"

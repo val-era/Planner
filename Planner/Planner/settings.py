@@ -17,6 +17,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_celery_beat',
     'mainpage',
     'django.contrib.admin',
     'django.contrib.auth',

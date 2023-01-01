@@ -2,7 +2,7 @@ import datetime
 
 from django.shortcuts import render, redirect
 from .models import Tasks
-from .forms import TaskForm, DateForm, GlobalForm, TagsForm, GlobalProjectsForm
+from .forms import TaskForm, DateForm, GlobalForm, TagsForm, GlobalProjectsForm, NotificationsForms
 from .scripts import save, update_global
 
 
@@ -269,3 +269,8 @@ def global_projects(request, parameter):
             all_task[i.global_task].append(i)
 
     return render(request, 'mainpage/global.html', {'task': task, 'form': form, 'all_task': all_task})
+
+
+def notifications(request):
+    form = NotificationsForms()
+    return render(request, 'mainpage/notifications.html', {'form': form})
