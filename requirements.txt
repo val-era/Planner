@@ -1,4 +1,4 @@
 django
 pyTelegramBotAPI
-django-crispy-forms
+django-celery-beat
 
