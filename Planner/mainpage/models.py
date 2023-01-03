@@ -31,6 +31,7 @@ class Tasks(models.Model):
 class Notifications(models.Model):
     user_id = models.CharField("ID пользователя", max_length=100)
     name = models.CharField("Имя", max_length=100)
+    is_active = models.BooleanField("Активный ключ")
 
     def __str__(self):
         return self.user_id

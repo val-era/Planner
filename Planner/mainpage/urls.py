@@ -14,4 +14,6 @@ urlpatterns = [
     path(r'tags/<parameter>/<parameter2>', views.tags, name='tags'),
     path('global_projects/<parameter>', views.global_projects, name='global_projects'),
     path('notifications', views.notifications, name='notifications'),
+    path('del_notif/<parameter>', views.del_notifications, name='del_notif'),
+    path('upd_notif/<parameter>/<parameter2>', views.upd_notifications, name='upd_notif'),
 ]

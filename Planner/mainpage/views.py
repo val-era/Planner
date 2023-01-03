@@ -276,9 +276,23 @@ def notifications(request):
         form = NotificationsForms(request.POST)
         user_id = form['user_id'].value()
         name = form['name'].value()
-        Notifications.objects.create(user_id=user_id, name=name)
+        Notifications.objects.create(user_id=user_id, name=name, is_active=True)
         return redirect('notifications')
 
     form = NotificationsForms()
     user_info = Notifications.objects.order_by("user_id")
     return render(request, 'mainpage/notifications.html', {'form': form, "user_info": user_info})
+
+
+def del_notifications(request, parameter):
+    Notifications.objects.filter(user_id=parameter).delete()
+    return redirect('notifications')
+
+
+def upd_notifications(request, parameter, parameter2):
+    obj = Notifications.objects.filter(user_id=parameter)
+    if parameter2 == "True":
+        obj.update(is_active=False)
+    else:
+        obj.update(is_active=True)
+    return redirect('notifications')
