@@ -272,6 +272,13 @@ def global_projects(request, parameter):
 
 
 def notifications(request):
+    if request.method == 'POST':
+        form = NotificationsForms(request.POST)
+        user_id = form['user_id'].value()
+        name = form['name'].value()
+        Notifications.objects.create(user_id=user_id, name=name)
+        return redirect('notifications')
+
     form = NotificationsForms()
     user_info = Notifications.objects.order_by("user_id")
     return render(request, 'mainpage/notifications.html', {'form': form, "user_info": user_info})
