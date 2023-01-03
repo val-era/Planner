@@ -1,46 +1,54 @@
 {%  extends 'mainpage/index.html' %}
 {% load static  %}
 
-{% block title %}Глобальные проекты{% endblock %}
+{% block title %}Оповещения{% endblock %}
 
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'mainpage/css/plan.css' %}">
 <body>
 <div class="box">
-	<span style="font-size:1.4em; color: #fff; font-family: 'Work Sans', sans-serif; width:70%; margin-left: 25%;">Введите id пользователя, который будет получать рассылку о текущих задачах.</span><br>
-	 <form method="post" style="width:50%; margin-left: 15%; padding: 0.5em 2em; color:#fff; font-family: 'Work Sans', sans-serif; font-size: 3rem;">
-      {% csrf_token %}
-		 {{ form }}
-		 <button class="modal__btn" type="submit" style="font-family: 'Work Sans', sans-serif; background:#b3c3e6; color:#000;">Подтвердить</button>
-	 </form>
-	{% for el in value %}
+	<a href="#id" class="link-1" id="">Добавить оповещения</a>
+	{% for el in user_info %}
           <tr>
 	      	<table class="bg_white" role="presentation" cellpadding="0" cellspacing="0" width="70%">
 					  <tr style="border-bottom: 1px solid rgba(0,0,0,.05);">
-					  	<td valign="middle" width="65%" style="text-align:left; padding: 0 2em;">
-					  		<div class="product-entry">
-					  			<div class="text">
-                                  <span><strong>{{ el.title }}</strong></span>
-					  				<p>{{ el.task }}</p>
-					  			</div>
-					  		</div>
+					  	<td valign="middle" width="40%" style="text-align:center; padding: 1em 2em;">
+                                  <span><strong>ID: {{ el.user_id }}</strong></span>
 					  	</td>
-                        {% if el.is_global %}
-                        <td  valign="middle" width="10%" style="text-align:center; background: #b3c3e6; padding: 0 1em;">
-                            <span class="price" style="color: #000; font-size: 1.5rem; font-family: 'Work Sans', sans-serif;"><strong>{{ el.global_task }}</strong></span>
+						  <td  valign="middle" width="40%" style="text-align:center; padding: 0 1em;">
+                            <span class="price" style="color: #000; font-size: 1.5rem; font-family: 'Work Sans', sans-serif;"><strong>{{ el.name }}</strong></span>
                         </td>
-                        {% endif %}
-					  	<td valign="middle" width="25%" style="text-align:right; padding: 0 2em;">
-					  		<span class="price" style="color: #000; font-size: 1.6rem; border: 0.7rem solid #828791; border-radius: 16px; background: #828791;"><strong>{{ el.teg }}</strong></span>
-					  	</td>
-						  <td valign="middle" width="10%" style="text-align:center; padding: 0 1em;">{{ el.date|date:"d.m" }}
+                          <td valign="middle" width="10%" style="text-align:left;">
+                            <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arvo&amp;display=swap'>
+                          <nav role="navigation" class="primary-navigation">
+                              <ul>
+                                <li><a><i class="fa fa-ellipsis-h"></i></a>
+                                  <ul class="dropdown">
+                                    <li><a href="">Удалить</a></li>
+                                    <li ><a href="">Остановить оповещения</a></li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </nav>
 					  	</td>
 					  </tr>
 	      	</table>
 	      </tr>
     {% endfor %}
 </div>
+
+<div class="modal-container" id="id" style="--m-background: transparent;">
+    <div class="modal">
+      <h1 class="modal__title">Добавить рассылку</h1>
+      <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="modal__btn" type="submit">Добавить</button>
+      </form>
+      <a href="" class="link-2"></a>
+    </div>
+  </div>
 
 </body>
 
